@@ -155,8 +155,8 @@ jobs:
           envs: EC2_PRIVATE_SSH_KEY,EC2_PRIVATE_IP,REGISTRY,REGISTRY_ALIAS,REPOSITORY,IMAGE_TAG,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
           script: |-
             sudo yum update -y
-            sudo amazon-linux-extras install docker -y
-            sudo service docker start
+            sudo yum install -y docker
+            sudo systemctl enable --now docker
             sudo docker pull $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
             sudo docker run -d --name ECR-Container -p 80:5000 $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
       # instead of running script, run Ansible playbook.
