@@ -162,7 +162,9 @@ jobs:
             sudo yum update -y
             sudo yum install -y docker
             sudo systemctl enable --now docker
-            sudo docker pull $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
+            # Stop and remove old container if exists
+            sudo docker rm -f ECR-Container || true
+            sudo docker pull $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY/$IMAGE_TAG
             sudo docker run -d --name ECR-Container -p 80:5000 $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
       # instead of running script, run Ansible playbook.
       # Note: run this command when applying for the second time.
