@@ -4,7 +4,7 @@
   tasks:
     - name: Run Yum Update
       ansible.builtin.yum:
-        name: '*'
+        name: "*"
         state: latest
 
     - name: Install Docker
@@ -23,8 +23,8 @@
       debug:
         var: my_command_output.stdout_lines
 
-    - name: Pull Latest Docker Image     
-      command: docker pull public.ecr.aws/g4x4w1s3/monty-hall-game:e164f5485f753e77c8f919161c6d9f157e43646f
+    - name: Pull Latest Docker Image
+      command: docker pull public.ecr.aws/p8t8j6w2/monty-hall-game:e164f5485f753e77c8f919161c6d9f157e43646f
 
-    - name: Run Docker container 
-      command: docker run -d --name ECR-Container -p 80:5000 public.ecr.aws/g4x4w1s3/monty-hall-game:e164f5485f753e77c8f919161c6d9f157e43646f
+    - name: Run Docker container
+      command: docker run -d --name ECR-Container -p 80:5000 public.ecr.aws/p8t8j6w2/monty-hall-game:e164f5485f753e77c8f919161c6d9f157e43646f

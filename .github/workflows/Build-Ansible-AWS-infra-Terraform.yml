@@ -107,7 +107,7 @@ jobs:
       #   if: env.TRIGGER == 'apply'
       #   env:
       #     REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
-      #     REGISTRY_ALIAS: g4x4w1s3
+      #     REGISTRY_ALIAS: p8t8j6w2
       #     REPOSITORY: monty-hall-game
       #     IMAGE_TAG: ${{ github.sha }}
       #   run: |
